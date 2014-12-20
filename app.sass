@@ -3,44 +3,22 @@
 @import normalize
 @import base/base
 
-// $max-width: em(1024)
 $mobile: new-breakpoint(max-width 768px)
-$tablet: new-breakpoint(min-width 769px)
-
-h3
-  text-align: center
 
 section
-  +outer-container
-  +pad(0 15px)
   margin-bottom: 20px
 
-.boxes
-  +clearfix
-  margin-bottom: 20px
+.center
+  margin-top: 20px
+  text-align: center
 
-.box
-  +span-columns(3)
-  +pad(10px)
-  +omega
-  text-align: justify
-  +media($mobile)
-    +span-columns(12)
-  +media($tablet)
-    +span-columns(6)
-    +omega
-
-#signup-form
-  +media($tablet)
-    +span-columns(4)
-    +shift(4)
-  +media($mobile)
-    +span-columns(12)
+#hover-wrap
+  display: inline-block
 
 header.navigation
   $navigation-padding: 1em
-  $navigation-background: $base-background-color
-  $navigation-color: transparentize(black, 0.3)
+  $navigation-background: $dark-gray
+  $navigation-color: transparentize(white, 0.3)
   $navigation-color-hover: white
   $navigation-height: 60px
   $navigation-nav-button-background: $base-accent-color
@@ -271,4 +249,333 @@ header.navigation
       input
         +box-sizing(border-box)
         display: block
+
+.hero
+  $hero-background-top: #7f99be
+  $hero-background-bottom: #20392b
+  $hero-color: white
+  $gradient-angle: 10deg
+  $hero-image: "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"
+  +background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll)
+  background-repeat: no-repeat
+  background-position: top
+  background-size: cover
+  padding-bottom: 4em
+  .hero-logo img
+    height: 3em
+    margin-bottom: 2.5em
+  .hero-inner
+    +outer-container
+    +clearfix
+    padding: 3em
+    margin: auto
+    text-align: center
+    color: $hero-color
+    .hero-copy
+      text-align: center
+      h1
+        font-size: 1.6em
+        margin-bottom: .5em
+        +media($large-screen)
+          font-size: 1.8em
+      p
+        font-family: $serif
+        margin: auto
+        margin-bottom: 3em
+        font-weight: 200
+        line-height: 1.4em
+        +media($large-screen)
+          font-size: 1.1em
+          max-width: 40%
+
+$browser-top-bar-height: 1.5em
+$browser-circle-size: .5em 
+$browser-circle-margin: ($browser-top-bar-height - $browser-circle-size) / 2
+$browser-top-bar-background: lighten(#DFDFDF, 5)
+$browser-border: 0px
+$browser-background: $base-background-color
+$browser-content-background-1: #F0F0F0
+$browser-content-background-2: $base-background-color
+$browser-content-background-3: #F0F0F0
+
+.browsers
+  display:inline-block
+  padding-top: 0
+  text-align:center
+  width: 100%
+
+  @include media($large-screen)
+    padding-top: 2em
+
+
+.browser-top-bar
+  @include linear-gradient($browser-top-bar-background, darken($browser-top-bar-background, 2))
+  border-top-left-radius: $base-border-radius
+  border-top-right-radius: $base-border-radius
+  border: $browser-border
+  box-shadow: inset 0 1px 0 transparentize(white, .6)
+  height: $browser-top-bar-height
+  width: 100%
+
+.browser-circle
+  border-radius: $browser-circle-size * 2
+  box-shadow: 0 1px 0px transparentize(white, .5), inset 0 1px 1px transparentize(black, 0.8)
+  display: inline-block
+  @include size($browser-circle-size)
+  margin: $browser-circle-margin 0
+
+.browser-circle:nth-child(1)
+  background: #FF6F55
+  margin-left: $browser-circle-margin
+
+.browser-circle:nth-child(2)
+  background: #F5B01D
+  margin-left: $browser-circle-margin / 3
+
+.browser-circle:nth-child(3)
+  background: #51B151
+  margin-left: $browser-circle-margin / 3
+
+.browser
+  border-bottom: none
+  border-top-left-radius: $base-border-radius
+  border-top-right-radius: $base-border-radius
+  box-shadow: 0 3px 5px transparentize(black, .7)
+  display: inline-block    
+  text-align: left
+  width: 20%
+
+.browser:nth-child(1)
+  background-color: $browser-content-background-1
+  display: none
+
+  @include media($large-screen)
+    display: inline-block    
+
+
+  .browser-content
+    background: url(https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/refills-screenshot1.png)
+    background-color: $browser-content-background-1
+    background-position: top
+    background-repeat: no-repeat
+    background-size: cover
+
+
+.browser:nth-child(2)
+  @include transform(scale(1))
+  background-color: $browser-content-background-2 
+  width: 90%
+  
+  @include media($large-screen)
+    @include transform(scale(1.2))
+    width: 40%
+
+
+  .browser-content
+    background: url(https://raw.githubusercontent.com/thoughtbot/refills/9c16f8b69d857c296c85f2d8c434e825f813a566/source/images/refills-screenshot2.jpg)
+    background-color: $browser-content-background-2 
+    background-position: top
+    background-repeat: no-repeat
+    background-size: cover
+
+
+.browser:nth-child(3)
+  background-color: $browser-content-background-3 
+  display: none
+   
+  @include media($large-screen)
+    display: inline-block    
+
+
+  .browser-content
+    background: url(https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/refills-screenshot3.png)
+    background-color: $browser-content-background-3 
+    background-position: top
+    background-repeat: no-repeat
+    background-size: cover
+
+
+.browser-content
+  border-left: $browser-border
+  border-right: $browser-border
+  height: 17em
+  overflow: hidden
+
+  @include media($large-screen)
+    height: 18em
+
+
+.cover
+  background: $base-background-color
+  border-top: 1px solid #E6E6E6
+  height: 3.2em
+  margin-top: -1em
+  position: relative
+  width: 100%
+  z-index: 999
+
+.footer
+  $footer-background: desaturate(darken($base-accent-color, 20), 30)
+  $footer-color: white
+  $footer-link-color: transparentize($footer-color, 0.6)
+  $footer-disclaimer-color: transparentize($footer-color, 0.6)
+  background: $footer-background
+  padding: $base-spacing * 2 $gutter
+  width: 100%
+  .footer-logo
+    text-align: center
+    margin-bottom: 2em
+    img
+      height: 3em
+  .footer-links
+    +clearfix
+    margin-bottom: $base-spacing
+    +media($medium-screen)
+      +shift(3)
+  ul
+    margin-bottom: $base-spacing * 2
+    +media($medium-screen)
+      +span-columns(3)
+      +omega(3n)
+      +clearfix
+  li
+    text-align: center
+    +media($medium-screen)
+      text-align: left
+  li a
+    color: $footer-link-color
+    &:hover
+      color: transparentize($footer-color, 0)
+  li h3
+    color: $footer-color
+    font-size: 1em
+    font-weight: 800
+    margin-bottom: .4em
+  hr
+    border: 1px solid transparentize($footer-disclaimer-color, 0.3)
+    margin: 0 auto $base-spacing
+    width: 12em
+  p
+    color: $footer-disclaimer-color
+    font-size: .9em
+    line-height: 1.5em
+    margin: auto
+    max-width: 35em
+    text-align: center
+
+.hover-tile-outer
+  $hover-tile-height: 10em
+  background-size: cover
+  background-position: bottom
+  background: url("/images/mountains.png")
+  background-color: $base-accent-color
+  border: 1px solid $base-border-color
+  height: $hover-tile-height
+  margin-bottom: $base-line-height
+  cursor: pointer
+  +span-columns(4)
+  +media($mobile)
+    +span-columns(12)
+
+  .hover-tile-container
+    height: $hover-tile-height
+    overflow: hidden
+  .hover-tile-container:hover > .hover-tile
+    +transform(translate(0, -100%))
+  .hover-tile
+    +transition(all, 0.2s ease-in-out)
+    background: inherit
+    color: white
+    height: inherit
+    padding: 1em 1.5em
+  .hover-tile-visible
+    color: transparentize(white, 0.3)
+    font-size: 2em
+    font-weight: 200
+    padding-top: 1.5em
+    text-align: center
+  .hover-tile-hidden
+    background: transparentize(black, 0.5)
+    h4
+      margin-bottom: .5em
+    p
+      color: transparentize(white, 0.3)
+
+$parallax-window-height: 30em
+$parallax-background-height: $parallax-window-height * 2
+
+.parallax-window
+  max-height: $parallax-window-height
+  overflow: hidden
+  position: relative
+  text-align: center
+  width: 100%
+
+.parallax-static-content
+  color: #9A9A8A
+  padding: 8em 0
+  position: relative
+  z-index: 9
+
+.parallax-background
+  background: url("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png") repeat
+  background-size: cover
+  background-color: beige
+  background-position: top
+  height: $parallax-background-height
+  left: 0
+  position: absolute
+  top: -$parallax-window-height / 3
+  width: 100%
+
+$sliding-menu-border-color: $dark-gray
+$sliding-menu-background: lighten($sliding-menu-border-color, 5)
+$sliding-menu-color: white
+$sliding-menu-border: 1px solid $sliding-menu-border-color
+$sliding-menu-background-hover: $base-accent-color
+$sliding-menu-color-hover: white
+
+.sliding-menu-button
+  display: inline-block
+  cursor: pointer
+  font-size: $base-font-size
+  margin-bottom: $base-line-height
+  position: relative
+  outline: none
+  +pad(25px)
+  border-radius: 500px
+  img
+    height: 1.6em
+
+.sliding-menu-content
+  +position(fixed, 0px auto 0px 0px)
+  +size(220px 100%)
+  +transform(translateX(-220px))
+  +transition(all 0.25s linear)
+  background: $sliding-menu-background
+  z-index: 999999
+  overflow-y: scroll
+  -webkit-overflow-scrolling: touch
+  li a
+    border-bottom: $sliding-menu-border
+    color: $sliding-menu-color
+    display: block
+    font-weight: bold
+    padding: 1em
+    &:hover
+      background-color: $sliding-menu-background-hover
+      color: $sliding-menu-color-hover
+  &.is-visible
+    +transform(translateX(0))
+
+.menu-screen
+  +position(fixed, 0px 0px 0px 0px)
+  +transition
+  background: $sliding-menu-border-color
+  opacity: 0
+  visibility: hidden
+  z-index: 999998
+  &.is-visible
+    opacity: .4
+    visibility: visible
 
